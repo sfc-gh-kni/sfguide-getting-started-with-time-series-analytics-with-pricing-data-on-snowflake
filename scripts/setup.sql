@@ -15,6 +15,9 @@ CREATE OR REPLACE WAREHOUSE time_series_analytics_wh AUTO_SUSPEND = 60;
 -- use our time_series_analytics_wh virtual warehouse 
 USE WAREHOUSE time_series_analytics_wh;
 
+-- Create Stage
+CREATE STAGE IF NOT EXISTS TIME_SERIES_ANALYTICS.RAW.EXAMPLE_STREAMLIT_STAGE DIRECTORY = ( ENABLE = true );
+
 -- create synthetic data for closing prices from tick history
 CREATE OR REPLACE TABLE time_series_analytics.raw.closing_prices AS
 WITH filtered_data AS (
